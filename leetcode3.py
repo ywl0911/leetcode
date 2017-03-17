@@ -34,3 +34,4 @@ class Solution(object):
 a = Solution()
 print a.lengthOfLongestSubstring("")
 print 'haha'
+print 'hehe'
