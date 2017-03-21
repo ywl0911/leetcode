@@ -37,4 +37,4 @@ class Solution(object):
 
 
 s = Solution()
-print s.longestPalindrome("aba")
+print(s.longestPalindrome("aba"))
