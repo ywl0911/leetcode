@@ -20,8 +20,8 @@ class Solution(object):
         for i in candidates:
             if i > target:
                 return
-            if i < last:
-                continue
+            # if i < last:
+            #     continue
             read_list.append(i)
             self.dfs(candidates, read_list, target - i, i)
             read_list.pop()
