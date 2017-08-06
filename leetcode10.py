@@ -37,6 +37,9 @@ class Solution(object):
         return dp[len(s)][len(p)]
 
 
+
+
+
 a=Solution()
 print(a.isMatch(s="",p=".*"))
 
