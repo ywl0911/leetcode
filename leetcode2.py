@@ -1,11 +1,8 @@
 # Definition for singly-linked list.
-import copy
-
 class ListNode(object):
     def __init__(self, x):
         self.val = x
         self.next = None
-
 
 class Solution(object):
     def addTwoNumbers(self, l1, l2):
@@ -14,44 +11,37 @@ class Solution(object):
         :type l2: ListNode
         :rtype: ListNode
         """
-        List_new = ListNode(None)
+        current1 = l1
+        current2 = l2
+        l = ListNode(0)
+        current = l
+        jinwei = 0
+        while current1 and current2:
+            val = (current1.val + current2.val + jinwei) % 10
 
-        c = 0
-        p = List_new
-        while l1 != None or l2 != None:
-            if l1 == None:
-                a = 0
-            else:
-                a = l1.val
-                l1 = l1.next
+            jinwei = (current1.val + current2.val + jinwei) // 10
+            current.next = ListNode(val)
+            current = current.next
+            current1 = current1.next
+            current2 = current2.next
 
-            if l2 == None:
-                b = 0
-            else:
-                b = l2.val
-                l2 = l2.next
+        while current1:
+            val = (current1.val + jinwei) % 10
 
-            d = (a + b + c) % 10
-            c = int((a + b + c) / 10)
+            jinwei = (current1.val + jinwei) // 10
+            current.next = ListNode(val)
+            current = current.next
+            current1 = current1.next
 
-            p.next = ListNode(d)
-            p = p.next
+        while current2:
+            val = (current2.val + jinwei) % 10
 
-        if c > 0:
-            p = List_new
-            while p.next != None:
-                p = p.next
-            p.next = ListNode(c)
-        return List_new.next
+            jinwei = (current2.val + jinwei) // 10
+            current.next = ListNode(val)
+            current = current.next
+            current2 = current2.next
 
+        if jinwei > 0:
+            current.next = ListNode(jinwei)
 
-l1 = ListNode(2)
-l1.next = ListNode(4)
-l1.next.next = ListNode(8)
-
-l2 = ListNode(5)
-l2.next = ListNode(6)
-l2.next.next = ListNode(4)
-
-s = Solution()
-aa = s.addTwoNumbers(l1, l2)
+        return l.next
