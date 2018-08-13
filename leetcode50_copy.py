@@ -15,3 +15,4 @@ class Solution(object):
 
 s = Solution()
 print(s.myPow(8.88023, 3))
+print(1)
